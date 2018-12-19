@@ -1,5 +1,5 @@
-
-# coding: utf-8
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 
 # In[69]:
 
@@ -13,13 +13,13 @@ import numpy as np
 def throw_has_double(result_set):
 
     for die_val in range(1,11):
-        double_throws = np.sum(result_set == die_val,axis=1) >= 2 
+        double_throws = np.sum(result_set == die_val,axis=1) >= 2
         if die_val == 1:
-            
             doubles_for_any_die_val = double_throws
         else:
-            doubles_for_any_die_val = np.logical_or(doubles_for_any_die_val,double_throws)
+            doubles_for_any_die_val = np.logical_or(doubles_for_any_die_val, double_throws)
     return doubles_for_any_die_val
+
 ##  Example when die_val = 6   
 #    #check if each die equals given die value,
 #    #sum true values to get count
@@ -43,7 +43,6 @@ def throw_has_double(result_set):
 # array([1, 0, 0, ..., 3, 0, 0])
 # np.sum(result_set == 6,axis=1) >=2
 # array([False, False, False, ...,  True, False, False], dtype=bool)
- 
 
 
 # In[79]:
@@ -68,6 +67,7 @@ def print_card_result_probabilities(result_set,dice_num):
     for card_result in range(6):
         percent_of_throws = count_of_card_results[card_result]/dice_throws
         print(card_result,    "{:.2%}".format(percent_of_throws))
+    print()
 
 
 # In[ ]:
@@ -75,8 +75,7 @@ def print_card_result_probabilities(result_set,dice_num):
 
 if __name__ == '__main__':
     for dice_num in range(1,10):
-        
         dice_throws = 100000
         result_set = np.random.randint(low=1, high=10, size=(dice_throws, dice_num))
-        print_card_result_probabilities(result_set,dice_num)
+        print_card_result_probabilities(result_set, dice_num)
 
